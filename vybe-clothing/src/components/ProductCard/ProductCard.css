@@ -1,0 +1,471 @@
+/* ==========================================
+   VYBE - LUXURY STREETWEAR PRODUCT CARD
+   High-Contrast Studio Frame + Quick Add
+========================================== */
+
+/* ========== GRID ========== */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 28px 22px;
+}
+
+/* ========== CARD CONTAINER ========== */
+
+.vybe-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid rgba(13, 15, 12, 0.08);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow:
+        0 2px 6px rgba(13, 15, 12, 0.025),
+        0 10px 24px rgba(13, 15, 12, 0.03);
+    transition:
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease,
+        border-color 0.35s ease;
+}
+
+.vybe-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(13, 15, 12, 0.18);
+    box-shadow:
+        0 20px 42px rgba(13, 15, 12, 0.09),
+        0 6px 14px rgba(13, 15, 12, 0.04);
+}
+
+/* ========== STUDIO IMAGE STAGE ========== */
+
+.vybe-card-media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 4 / 4.8;
+    overflow: hidden;
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            ellipse at 50% 42%,
+            #fafaf8 0%,
+            #eeeee8 72%,
+            #e6e7e0 100%
+        );
+    isolation: isolate;
+    text-decoration: none;
+}
+
+/* Soft studio floor shadow under product */
+.vybe-card-media::before {
+    content: "";
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 8%;
+    z-index: 0;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(
+        closest-side,
+        rgba(13, 15, 12, 0.14),
+        transparent
+    );
+    filter: blur(4px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.vybe-card:hover .vybe-card-media::before {
+    transform: scaleX(0.88);
+    opacity: 0.75;
+}
+
+.vybe-card-media img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 9%;
+    object-fit: contain;
+    object-position: center;
+    mix-blend-mode: multiply;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vybe-card:hover .vybe-card-media img {
+    transform: scale(1.06) translateY(-3px);
+}
+
+/* ========== BADGES ========== */
+
+.vybe-badge-group {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.vybe-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #0d0f0c;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(13, 15, 12, 0.12);
+}
+
+.vybe-badge.tone-sale {
+    background: #e6193c;
+    color: #ffffff;
+}
+
+.vybe-badge.tone-new {
+    background: #b4f13c;
+    color: #0d0f0c;
+}
+
+.vybe-badge.tone-trending {
+    background: #ffffff;
+    color: #0d0f0c;
+    border: 1px solid rgba(13, 15, 12, 0.1);
+}
+
+.vybe-badge.tone-hot {
+    background: #0d0f0c;
+    color: #b4f13c;
+}
+
+/* ========== WISHLIST HEART BUTTON ========== */
+
+.vybe-wishlist-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 6;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(13, 15, 12, 0.08);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    color: #0d0f0c;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(13, 15, 12, 0.08);
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vybe-wishlist-btn:hover {
+    transform: scale(1.08);
+    background: #ffffff;
+    border-color: rgba(230, 25, 60, 0.3);
+    color: #e6193c;
+}
+
+.vybe-wishlist-btn.is-active {
+    background: #fff0f3;
+    border-color: rgba(230, 25, 60, 0.35);
+    color: #e6193c;
+    box-shadow: 0 6px 16px rgba(230, 25, 60, 0.18);
+}
+
+/* ========== HOVER ACTION & QUICK ADD BAR ========== */
+
+.vybe-card-action {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    height: 44px;
+    padding: 0 6px 0 14px;
+    border-radius: 10px;
+    background: rgba(13, 15, 12, 0.92);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vybe-card:hover .vybe-card-action {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vybe-action-text {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.vybe-quick-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 32px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 7px;
+    background: #b4f13c;
+    color: #0d0f0c;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vybe-quick-add-btn:hover {
+    background: #ffffff;
+    color: #0d0f0c;
+    transform: scale(1.03);
+}
+
+/* ========== CARD BODY ========== */
+
+.vybe-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: 14px 6px 6px;
+}
+
+.vybe-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0 0 8px;
+}
+
+.vybe-meta-cat {
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #f2f3ee;
+    color: #55584f;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.vybe-meta-sizes {
+    color: #8a8d82;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.vybe-card-title {
+    margin: 0 0 6px;
+    color: #0d0f0c;
+    font-family: var(--font-display, inherit);
+    font-size: 15.5px;
+    font-weight: 750;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+}
+
+.vybe-card-title a {
+    display: -webkit-box;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    transition: color 0.2s ease;
+}
+
+.vybe-card-title a:hover {
+    color: #4d7a0a;
+}
+
+.vybe-card-description {
+    display: -webkit-box;
+    margin: 0 0 14px;
+    overflow: hidden;
+    color: #7c8075;
+    font-size: 12px;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+/* ========== PRICE FOOTER ========== */
+
+.vybe-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #eff0ea;
+}
+
+.vybe-price-group {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.vybe-card-price {
+    margin: 0;
+    color: #0d0f0c;
+    font-family: var(--font-display, inherit);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.vybe-card-price.is-sale {
+    color: #e6193c;
+}
+
+.vybe-card-old-price {
+    color: #96998f;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: line-through;
+    font-variant-numeric: tabular-nums;
+}
+
+.vybe-card-btn {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #e4e6de;
+    border-radius: 9px;
+    background: #fbfbf8;
+    color: #0d0f0c;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.vybe-card:hover .vybe-card-btn {
+    border-color: #0d0f0c;
+    background: #0d0f0c;
+    color: #b4f13c;
+}
+
+.vybe-card-btn:hover {
+    border-color: #b4f13c !important;
+    background: #b4f13c !important;
+    color: #0d0f0c !important;
+    transform: translateY(-1px);
+}
+
+/* ========== FOCUS ========== */
+
+.vybe-card-media:focus-visible,
+.vybe-card-title a:focus-visible,
+.vybe-card-btn:focus-visible {
+    outline: 2px solid #0d0f0c;
+    outline-offset: 3px;
+}
+
+/* ========== TABLET ========== */
+
+@media (max-width: 1100px) {
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px 16px;
+    }
+}
+
+/* ========== MOBILE ========== */
+
+@media (max-width: 700px) {
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 12px;
+    }
+
+    .vybe-card {
+        padding: 7px;
+        border-radius: 14px;
+    }
+
+    .vybe-card-media {
+        border-radius: 10px;
+    }
+
+    .vybe-badge-group {
+        top: 8px;
+        left: 8px;
+    }
+
+    .vybe-badge {
+        padding: 4px 7px;
+        font-size: 8.5px;
+    }
+
+    .vybe-wishlist-btn {
+        top: 14px;
+        right: 14px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .vybe-card-action {
+        display: none;
+    }
+
+    .vybe-card-body {
+        padding: 10px 4px 4px;
+    }
+
+    .vybe-meta-sizes {
+        display: none;
+    }
+
+    .vybe-card-title {
+        font-size: 13px;
+    }
+
+    .vybe-card-description {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+
+    .vybe-card-price {
+        font-size: 14px;
+    }
+
+    .vybe-card-old-price {
+        font-size: 10.5px;
+    }
+
+    .vybe-card-btn {
+        width: 28px;
+        height: 28px;
+    }
+}

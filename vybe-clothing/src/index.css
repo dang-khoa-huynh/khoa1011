@@ -1,0 +1,240 @@
+/* ========================================
+   VYBE - GLOBAL STYLES (upgraded)
+   Giữ nguyên tên biến cũ để các component khác không bị vỡ
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* CSS VARIABLES */
+
+:root {
+    /* Brand */
+    --primary: #b4f13c;
+    --primary-dark: #94d41c;
+    --primary-soft: #f1fcd9;
+
+    /* Neutrals */
+    --black: #0d0f0c;
+    --white: #ffffff;
+
+    --text: #23261f;
+    --text-light: #6b7064;
+
+    --bg: #fbfbf8;
+    --bg-light: #f2f3ee;
+
+    --border: #e4e6de;
+    --border-strong: #cfd2c7;
+
+    /* Elevation */
+    --shadow-sm: 0 1px 2px rgba(13, 15, 12, 0.04), 0 4px 12px rgba(13, 15, 12, 0.04);
+    --shadow-md: 0 2px 4px rgba(13, 15, 12, 0.04), 0 12px 32px rgba(13, 15, 12, 0.08);
+    --shadow-lg: 0 4px 8px rgba(13, 15, 12, 0.05), 0 24px 60px rgba(13, 15, 12, 0.12);
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 999px;
+
+    /* Type — Clean Commercial E-commerce Typography (Inter + System UI) */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Motion */
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --duration: 0.35s;
+
+    font-family: var(--font-main);
+    color: var(--text);
+    background: var(--bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* RESET */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+/* ROOT */
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TYPOGRAPHY */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--black);
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+
+h1 { font-size: clamp(34px, 4.5vw, 60px); font-weight: 700; letter-spacing: -0.015em; }
+h2 { font-size: clamp(26px, 3.2vw, 40px); font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: clamp(19px, 2vw, 24px); font-weight: 600; }
+
+p {
+    margin: 0;
+    text-wrap: pretty;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--duration) var(--ease), opacity var(--duration) var(--ease);
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-light);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--black);
+    box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* FOCUS (accessibility) */
+
+:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* SELECTION */
+
+::selection {
+    background: var(--primary);
+    color: var(--black);
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border: 2px solid var(--bg-light);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* COMMON CONTAINER */
+
+.container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 64px);
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+}

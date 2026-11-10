@@ -1,0 +1,407 @@
+/* ========================================
+   VYBE - PRODUCTS PAGE
+   Editorial Streetwear Catalog
+======================================== */
+
+.products-page {
+    --pp-bg: #fbfbf8;
+    --pp-white: #ffffff;
+    --pp-ink: #0d0f0c;
+    --pp-muted: #767970;
+    --pp-border: #e4e5df;
+
+    width: 100%;
+    min-height: 100vh;
+    background: var(--pp-bg);
+    color: var(--pp-ink);
+    font-family: var(--font-main, "Be Vietnam Pro", sans-serif);
+}
+
+/* ========== BANNER ========== */
+
+.products-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 440px;
+    padding: 56px 6%;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(13, 15, 12, 0.78) 0%,
+            rgba(13, 15, 12, 0.42) 58%,
+            rgba(13, 15, 12, 0.18) 100%
+        ),
+        url("https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1800&q=85") center / cover no-repeat;
+    color: #ffffff;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.banner-content span {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.banner-content h1 {
+    max-width: 14ch;
+    margin: 0;
+    color: #ffffff;
+    font-family: var(--font-display, inherit);
+    font-size: clamp(40px, 5.2vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.banner-content p {
+    max-width: 460px;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15.5px;
+    line-height: 1.65;
+}
+
+/* ========== PRODUCTS BODY ========== */
+
+.products-body {
+    width: 88%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px 0 110px;
+}
+
+/* ========== EDITORIAL FILTER BAR ========== */
+
+.fashion-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--pp-border);
+}
+
+.fashion-cat-tabs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.fashion-tab {
+    position: relative;
+    padding: 8px 0;
+    border: none;
+    background: transparent;
+    color: var(--pp-muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.fashion-tab:hover {
+    color: var(--pp-ink);
+}
+
+.fashion-tab.active {
+    color: var(--pp-ink);
+}
+
+.fashion-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -17px;
+    height: 2px;
+    background: var(--pp-ink);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.fashion-tab.active::after {
+    transform: scaleX(1);
+}
+
+.fashion-tab-sale {
+    color: #c8102e;
+}
+
+.fashion-tab-sale:hover,
+.fashion-tab-sale.active {
+    color: #a50d26;
+}
+
+.fashion-tab-sale::after {
+    background: #c8102e;
+}
+
+/* ========== CONTROLS (GENDER & SORT) ========== */
+
+.fashion-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.fashion-select-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.fashion-select-group label {
+    white-space: nowrap;
+    flex-shrink: 0;
+    color: var(--pp-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.fashion-select-group select {
+    width: auto;
+    min-width: 130px;
+    padding: 6px 10px;
+    border: 1px solid var(--pp-border);
+    border-radius: 3px;
+    background: #ffffff;
+    color: var(--pp-ink);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+}
+
+.fashion-select-group select:focus {
+    border-color: var(--pp-ink);
+    box-shadow: none;
+}
+
+/* ========== SEARCH RESULT BAR & PRODUCT COUNT ========== */
+
+.fashion-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 22px 0 30px;
+}
+
+.products-count {
+    color: var(--pp-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.products-count strong {
+    color: var(--pp-ink);
+    font-weight: 800;
+}
+
+.search-result-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 24px 0 34px;
+    padding: 16px 22px;
+    border: 1px solid #e2e4dc;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(13, 15, 12, 0.04);
+}
+
+.search-result-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.search-result-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #f2f3ee;
+    color: #0d0f0c;
+}
+
+.search-result-text {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.search-result-label {
+    color: #6b7064;
+    font-weight: 500;
+}
+
+.search-result-keyword {
+    color: #0d0f0c;
+    font-family: var(--font-display, inherit);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.search-result-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #f1fcd9;
+    color: #3f6606;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.search-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid #0d0f0c;
+    border-radius: 999px;
+    background: #0d0f0c;
+    color: #ffffff;
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.search-back-btn:hover {
+    background: #b4f13c;
+    border-color: #b4f13c;
+    color: #0d0f0c;
+    transform: translateX(-2px);
+}
+
+/* ========== PRODUCT GRID ========== */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: 36px 20px;
+    width: 100%;
+}
+
+.products-grid > * {
+    min-width: 0;
+}
+
+/* ========== EMPTY STATE ========== */
+
+.products-empty {
+    grid-column: 1 / -1;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.products-empty h3 {
+    margin-bottom: 10px;
+    color: var(--pp-ink);
+    font-size: 22px;
+}
+
+.products-empty p {
+    margin-bottom: 22px;
+    color: var(--pp-muted);
+    font-size: 14px;
+}
+
+.products-empty button {
+    padding: 12px 26px;
+    border: 1px solid var(--pp-ink);
+    border-radius: 3px;
+    background: var(--pp-ink);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.products-empty button:hover {
+    background: transparent;
+    color: var(--pp-ink);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px 16px;
+    }
+}
+
+@media (max-width: 850px) {
+    .products-body {
+        width: 92%;
+        padding: 36px 0 80px;
+    }
+
+    .fashion-tab::after {
+        display: none;
+    }
+
+    .fashion-tab.active {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+    }
+
+    .products-banner {
+        min-height: 340px;
+        padding: 40px 5%;
+    }
+}
+
+@media (max-width: 550px) {
+    .products-banner {
+        min-height: 280px;
+        padding: 32px 20px;
+    }
+
+    .banner-content h1 {
+        font-size: 38px;
+    }
+
+    .fashion-cat-tabs {
+        gap: 14px;
+    }
+}

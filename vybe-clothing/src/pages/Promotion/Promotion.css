@@ -1,0 +1,358 @@
+/* ========================================
+   VYBE - PROMOTION PAGE
+   Flash Sale & Voucher Deals
+======================================== */
+
+.promotion-page {
+    width: 100%;
+    min-height: 100vh;
+    background: #f2f3ee;
+    color: #0d0f0c;
+    padding-bottom: 110px;
+}
+
+/* ========== PROMO BANNER ========== */
+
+.promo-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 460px;
+    padding: 64px 6%;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            95deg,
+            rgba(13, 15, 12, 0.78) 0%,
+            rgba(13, 15, 12, 0.46) 55%,
+            rgba(13, 15, 12, 0.15) 100%
+        ),
+        url("/images/banner_products.png") center / cover no-repeat;
+    color: #ffffff;
+}
+
+.promo-banner-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.promo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 5px 12px;
+    border-radius: 2px;
+    background: #c8102e;
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.promo-banner h1 {
+    max-width: 16ch;
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-family: var(--font-display, inherit);
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+.promo-banner h1 span {
+    display: block;
+    color: #c8ff4d;
+}
+
+.promo-banner p {
+    max-width: 560px;
+    margin: 0 0 32px;
+    color: #f7f8f5;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.promo-highlights {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.promo-highlights span {
+    padding: 9px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 999px;
+    background: rgba(13, 15, 12, 0.62);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ========== VOUCHERS SECTION ========== */
+
+.promo-vouchers-section {
+    width: 88%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 64px 0 20px;
+}
+
+.promo-vouchers-head {
+    margin-bottom: 24px;
+}
+
+.voucher-head-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.voucher-head-title svg {
+    color: #ff2e4c;
+}
+
+.voucher-head-title h2 {
+    margin: 0 0 2px;
+    font-family: var(--font-display, inherit);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.voucher-head-title p {
+    margin: 0;
+    color: #6b7064;
+    font-size: 13px;
+}
+
+.promo-vouchers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.voucher-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border: 1px dashed rgba(13, 15, 12, 0.22);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(13, 15, 12, 0.04);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.voucher-card:hover {
+    transform: translateY(-3px);
+    border-color: #0d0f0c;
+}
+
+.voucher-tag {
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #f1fcd9;
+    color: #4d7a0a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.voucher-left h3 {
+    margin: 0 0 4px;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.voucher-left p {
+    margin: 0;
+    color: #6b7064;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.voucher-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.voucher-code {
+    padding: 5px 12px;
+    border-radius: 8px;
+    background: #f2f3ee;
+    color: #0d0f0c;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.voucher-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 999px;
+    background: #0d0f0c;
+    color: #fff;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.voucher-copy-btn:hover {
+    background: #b4f13c;
+    color: #0d0f0c;
+}
+
+.voucher-copy-btn.copied {
+    background: #b4f13c;
+    color: #0d0f0c;
+}
+
+/* ========== PROMO CATALOG ========== */
+
+.promo-catalog-section {
+    width: 88%;
+    max-width: 1440px;
+    margin: 36px auto 0;
+}
+
+.promo-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 18px 22px;
+    border: 1px solid #e4e6de;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.promo-filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.promo-pill {
+    padding: 9px 18px;
+    border: 1px solid #e4e6de;
+    border-radius: 999px;
+    background: #fbfbf8;
+    color: #55594f;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.promo-pill:hover {
+    border-color: #0d0f0c;
+    color: #0d0f0c;
+}
+
+.promo-pill.active {
+    background: #0d0f0c;
+    border-color: #0d0f0c;
+    color: #b4f13c;
+}
+
+.promo-sort-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.promo-sort-box label {
+    white-space: nowrap;
+    flex-shrink: 0;
+    color: #0d0f0c;
+}
+
+.promo-sort-box select {
+    width: auto;
+    min-width: 195px;
+    padding: 9px 16px;
+    border: 1px solid #e4e6de;
+    border-radius: 999px;
+    background: #fbfbf8;
+    color: #0d0f0c;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+
+.promo-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.promo-saving-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 46, 76, 0.18);
+    border-radius: 12px;
+    background: #fff4f6;
+    color: #c8102e;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.promo-saving-note strong {
+    font-weight: 800;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+    .promo-vouchers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .promo-banner {
+        min-height: 400px;
+        padding: 44px 5%;
+    }
+
+    .promo-vouchers-section,
+    .promo-catalog-section {
+        width: 92%;
+    }
+
+    .promo-saving-note {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+}
