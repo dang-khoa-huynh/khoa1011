@@ -1,95 +1,37 @@
-.floating-radial {
+.floating-contact {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 22px;
+    bottom: 22px;
     z-index: 998;
-    width: 58px;
-    height: 58px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* Nút chính màu tối ở tâm */
-.radial-main {
-    position: relative;
-    z-index: 2;
-    width: 58px;
-    height: 58px;
+.floating-btn {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: none;
-    background: #1a2232;
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(26, 34, 50, 0.35);
-    transition: transform 0.25s ease, background 0.25s ease;
-}
-
-.radial-main:hover {
-    transform: scale(1.06);
-}
-
-/* Các nút con bung theo hình cánh cung */
-.radial-item {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    z-index: 1;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    color: #ffffff;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(0, 0) scale(0.5);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.floating-radial.is-open .radial-item {
-    opacity: 1;
-    pointer-events: auto;
+.floating-btn:hover {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
 }
 
-/* Vị trí bung ra theo vòng cung 90° */
-.floating-radial.is-open .item-livechat {
-    transform: translate(0px, -82px) scale(1);
-    transition-delay: 0.02s;
+.floating-btn.is-messenger {
+    background: linear-gradient(135deg, #0084ff, #a033ff);
 }
 
-.floating-radial.is-open .item-zalo {
-    transform: translate(-62px, -62px) scale(1);
-    transition-delay: 0.07s;
-}
-
-.floating-radial.is-open .item-messenger {
-    transform: translate(-82px, 0px) scale(1);
-    transition-delay: 0.12s;
-}
-
-.radial-item:hover {
-    filter: brightness(1.08);
-}
-
-/* Màu từng nút giống ảnh mẫu */
-.item-livechat {
-    background: #ef4444;
-}
-
-.item-zalo,
-.item-messenger {
-    background: #3b82f6;
-}
-
-.zalo-text {
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: -0.3px;
+.floating-btn.is-livechat {
+    background: #111111;
 }
