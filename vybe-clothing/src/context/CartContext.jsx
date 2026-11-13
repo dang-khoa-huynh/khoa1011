@@ -240,14 +240,22 @@ export function CartProvider({ children }) {
     const freeShippingThreshold = 499000;
     const isFreeShipping = subtotal >= freeShippingThreshold;
 
+    // Nếu đơn hàng đạt từ 499.000đ trở lên (đã được Freeship mặc định), tự động bỏ qua mã FREESHIP (nếu đang áp)
+    const effectiveCoupon =
+        isFreeShipping && appliedCoupon?.code === "FREESHIP"
+            ? vipEmail
+                ? VIP15_COUPON
+                : null
+            : appliedCoupon;
+
     const baseShippingFee = subtotal === 0 ? 0 : isFreeShipping ? 0 : 30000;
-    const shippingFee = appliedCoupon?.type === "freeship" ? 0 : baseShippingFee;
+    const shippingFee = effectiveCoupon?.type === "freeship" ? 0 : baseShippingFee;
 
     let discountAmount = 0;
-    if (appliedCoupon?.type === "percent") {
-        discountAmount = Math.round(subtotal * (appliedCoupon.value / 100));
-    } else if (appliedCoupon?.type === "fixed") {
-        discountAmount = Math.min(subtotal, appliedCoupon.value);
+    if (effectiveCoupon?.type === "percent") {
+        discountAmount = Math.round(subtotal * (effectiveCoupon.value / 100));
+    } else if (effectiveCoupon?.type === "fixed") {
+        discountAmount = Math.min(subtotal, effectiveCoupon.value);
     }
 
     const finalTotal = Math.max(0, subtotal - discountAmount + shippingFee);
@@ -266,7 +274,7 @@ export function CartProvider({ children }) {
                 subtotal,
                 isFreeShipping,
                 freeShippingThreshold,
-                appliedCoupon,
+                appliedCoupon: effectiveCoupon,
                 setAppliedCoupon,
                 discountAmount,
                 shippingFee,

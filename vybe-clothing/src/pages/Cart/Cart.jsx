@@ -68,7 +68,14 @@ export default function Cart() {
             setAppliedCoupon({ code: "VYBE10", type: "percent", value: 10, label: "Giảm 10% đơn hàng" });
             setCouponMessage({ text: "🎉 Áp dụng thành công mã giảm 10%!", isError: false });
         } else if (code === "FREESHIP") {
-            setAppliedCoupon({ code: "FREESHIP", type: "freeship", value: 0, label: "Miễn phí vận chuyển" });
+            if (subtotal >= freeshipThreshold) {
+                setCouponMessage({
+                    text: "Đơn hàng của bạn đã được miễn phí vận chuyển nên không thể áp dụng thêm mã FREESHIP.",
+                    isError: true
+                });
+                return;
+            }
+            setAppliedCoupon({ code: "FREESHIP", type: "freeship", value: 30000, label: "Miễn phí vận chuyển" });
             setCouponMessage({ text: "🎉 Áp dụng thành công mã Miễn phí vận chuyển!", isError: false });
         } else if (code === "VYBE50K") {
             if (subtotal < 500000) {
@@ -336,7 +343,11 @@ export default function Cart() {
                                 {appliedCoupon && (
                                     <div className="summary-row discount-row">
                                         <span>Khuyến mãi ({appliedCoupon.code})</span>
-                                        <strong>-{formatPrice(discountAmount)}</strong>
+                                        <strong>
+                                            {appliedCoupon.type === "freeship"
+                                                ? "Miễn phí ship (-30.000đ)"
+                                                : `-${formatPrice(discountAmount)}`}
+                                        </strong>
                                     </div>
                                 )}
 

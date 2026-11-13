@@ -828,10 +828,14 @@ export default function Checkout() {
                                     <span>Tạm tính</span>
                                     <span>{formatPrice(subtotal)}</span>
                                 </div>
-                                {appliedCoupon && discountAmount > 0 && (
+                                {appliedCoupon && (discountAmount > 0 || appliedCoupon.type === "freeship") && (
                                     <div className="calc-row">
                                         <span>Mã giảm giá ({appliedCoupon.code})</span>
-                                        <strong className="text-free">-{formatPrice(discountAmount)}</strong>
+                                        <strong className="text-free">
+                                            {appliedCoupon.type === "freeship"
+                                                ? "Miễn phí ship (-30.000đ)"
+                                                : `-${formatPrice(discountAmount)}`}
+                                        </strong>
                                     </div>
                                 )}
                                 <div className="calc-row">
