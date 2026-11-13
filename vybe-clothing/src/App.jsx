@@ -10,6 +10,7 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingContact from "./components/FloatingContact/FloatingContact";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 
@@ -37,6 +38,7 @@ function App() {
                         </Routes>
                     </main>
                     <Footer />
+                    <FloatingContact />
                 </WishlistProvider>
             </CartProvider>
         </BrowserRouter>

@@ -151,7 +151,7 @@ export default function Footer() {
                             Instagram
                         </a>
                         <a
-                            href="https://facebook.com"
+                            href="https://www.facebook.com/profile.php?id=61596176506026"
                             target="_blank"
                             rel="noreferrer"
                             className="footer-social-pill"
