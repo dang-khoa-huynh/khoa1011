@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
     MapPin,
@@ -7,39 +7,39 @@ import {
     Clock,
     ArrowUp,
     Send,
-    CheckCircle2,
+    // CheckCircle2,
     ShieldCheck,
     CreditCard,
     QrCode,
     Truck
 } from "lucide-react";
-import { useCart } from "../../context/CartContext";
+// import { useCart } from "../../context/CartContext";
 import "./Footer.css";
 
 export default function Footer() {
-    const [email, setEmail] = useState("");
-    const [errorMsg, setErrorMsg] = useState("");
-    const { vipEmail, registerVipEmail, clearVipEmail } = useCart();
+    // const [email, setEmail] = useState("");
+    // const [errorMsg, setErrorMsg] = useState("");
+    // const { vipEmail, registerVipEmail, clearVipEmail } = useCart();
 
-    const handleSubscribe = (e) => {
-        e.preventDefault();
-        const cleanEmail = email.trim();
-        if (!cleanEmail) return;
+    // const handleSubscribe = (e) => {
+    //     e.preventDefault();
+    //     const cleanEmail = email.trim();
+    //     if (!cleanEmail) return;
 
-        const result = registerVipEmail(cleanEmail);
-        if (!result.success) {
-            setErrorMsg(result.message);
-            return;
-        }
+    //     const result = registerVipEmail(cleanEmail);
+    //     if (!result.success) {
+    //         setErrorMsg(result.message);
+    //         return;
+    //     }
 
-        setErrorMsg("");
-        setEmail("");
-    };
+    //     setErrorMsg("");
+    //     setEmail("");
+    // };
 
-    const handleChangeEmail = () => {
-        setErrorMsg("");
-        clearVipEmail();
-    };
+    // const handleChangeEmail = () => {
+    //     setErrorMsg("");
+    //     clearVipEmail();
+    // };
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -59,6 +59,45 @@ export default function Footer() {
                 </div>
 
                 <div className="footer-newsletter-action">
+                    <form
+                        className="footer-newsletter-form"
+                        action="https://nttu.us4.list-manage.com/subscribe/post?u=87e194f76003c6ad8e95f6a3f&amp;id=85bfced8b2&amp;f_id=00c5abeaf0"
+                        method="post"
+                        target="_blank"
+                    >
+                        <input
+                            type="email"
+                            name="EMAIL"
+                            placeholder="Nhập địa chỉ email của bạn..."
+                            autoComplete="email"
+                            required
+                        />
+
+                        {/* Mailchimp anti-bot field - Không được xóa */}
+                        <div
+                            aria-hidden="true"
+                            style={{
+                                position: "absolute",
+                                left: "-5000px"
+                            }}
+                        >
+                            <input
+                                type="text"
+                                name="b_87e194f76003c6ad8e95f6a3f_85bfced8b2"
+                                tabIndex="-1"
+                                defaultValue=""
+                            />
+                        </div>
+
+                        <button type="submit" name="subscribe" value="Subscribe">
+                            <span>Đăng ký</span>
+                            <Send size={15} />
+                        </button>
+                    </form>
+                </div>
+
+                
+                {/* <div className="footer-newsletter-action">
                     {vipEmail ? (
                         <div className="footer-subscribe-success">
                             <CheckCircle2 size={20} />
@@ -102,7 +141,7 @@ export default function Footer() {
                             )}
                         </div>
                     )}
-                </div>
+                </div> */}
             </div>
 
             {/* LƯỚI NỘI DUNG CHÍNH 4 CỘT */}
